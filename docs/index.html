@@ -276,10 +276,121 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; letter-sp
 }
 @media (prefers-reduced-motion: reduce) { .tour-hole { transition: none; } }
 
+/* 피드백 반영: 인물 변화, 밤 대비 숫자, 실행 확인, 상단 아이콘 설명 */
+.pchg { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 4px; }
+.pc { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; padding: 3px 10px 3px 4px; border-radius: 99px; background: var(--panel-2); }
+.pc.good { color: #a6f0c6; } .pc.bad { color: #ffb4ae; }
+.tnum { font-size: 13px; color: var(--text); }
+.tnum b { font-size: 15px; }
+.foodline { display: block; }
+.cta-left { display: inline-block; margin-left: 8px; font-size: 13px; font-weight: 700; padding: 1px 8px; border-radius: 99px; background: rgba(0,0,0,.18); }
+button.chip { color: inherit; font: inherit; cursor: pointer; }
+button.chip:hover { border-color: var(--line); }
+.confirm-slots { display: flex; gap: 6px; margin: 10px 0 14px; }
+.confirm-slots .slot { cursor: default; }
+.toast.info { background: var(--panel-3); color: var(--text); font-weight: 500; border: 1px solid var(--accent); max-width: min(440px, 92vw); text-align: left; }
+/* 탈출 작전 */
+.esc-head { display: flex; gap: 12px; align-items: center; padding: 12px; border-radius: 12px; margin-bottom: 4px;
+  background: linear-gradient(120deg, color-mix(in srgb, var(--accent) 22%, var(--panel-2)), var(--panel-2)); border: 1px solid color-mix(in srgb, var(--accent) 50%, var(--line)); }
+.esc-head .heli { font-size: 40px; line-height: 1; }
+.esc-head b { font-family: var(--display); font-weight: 400; font-size: 24px; display: block; }
+.esc-tactics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.guards { display: flex; flex-wrap: wrap; gap: 6px; }
+.guard { display: flex; align-items: center; gap: 6px; padding: 4px 10px 4px 4px; border-radius: 99px; border: 1px solid var(--line); background: var(--panel-2); font-size: 13.5px; }
+.guard.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 16%, var(--panel-2)); }
+.guard .gb { color: var(--good); font-size: 12px; }
+.chance { display: grid; grid-template-columns: auto 1fr; gap: 14px; align-items: center; padding: 12px; border-radius: 10px; background: var(--bg); border: 1px solid var(--line); }
+.chance .pct { font-family: var(--display); font-size: 44px; line-height: 1; }
+.parts { display: flex; flex-wrap: wrap; gap: 4px; }
+.parts span { font-size: 12px; padding: 2px 8px; border-radius: 99px; background: var(--panel-2); }
+.parts .plus { color: var(--good); } .parts .minus { color: #ff9a92; }
+.chip.heli { border-color: var(--accent); }
+.end-escape .end-cast .pf { width: 46px; height: 46px; }
+@media (max-width: 820px) { .esc-tactics { grid-template-columns: 1fr 1fr; } .esc-tactics .act .ad { display: block; } .chance .pct { font-size: 36px; } }
+/* 낮 결과 보고서 */
+.rep-sec { font-size: 13px; color: var(--muted); margin: 14px 0 6px; display: flex; align-items: center; gap: 6px; }
+.rep-sec:first-of-type { margin-top: 4px; }
+.gains { display: flex; flex-wrap: wrap; gap: 8px; }
+.gain { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 12px; background: var(--panel-2); border: 1px solid var(--line); }
+.gain .gi { font-size: 22px; line-height: 1; }
+.gain .gl { font-size: 12px; color: var(--muted); display: block; line-height: 1.2; }
+.gain .gv { font-family: var(--display); font-size: 22px; line-height: 1.1; }
+.gain.up { border-color: #2d6a48; } .gain.up .gv { color: var(--good); }
+.gain.down { border-color: #7a2f2b; } .gain.down .gv { color: #ff9a92; }
+.gains { align-items: center; }
+.gain.small { padding: 5px 10px; } .gain.small .gi { font-size: 16px; } .gain.small .gv { font-size: 17px; }
+.acts-done { display: grid; gap: 6px; }
+.done { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; padding: 8px 10px; border-radius: 10px; background: var(--panel-2); border-left: 4px solid var(--line); font-size: 14px; }
+.done.good { border-left-color: var(--good); } .done.bad { border-left-color: var(--danger); background: #2b1a22; } .done.warn { border-left-color: var(--accent); }
+.done .pf { width: 40px; height: 40px; }
+.done .who { font-weight: 700; font-size: 13px; }
+.done .dot { width: 40px; height: 40px; border-radius: 10px; background: var(--bg); display: grid; place-items: center; font-size: 18px; }
+.hl-good { color: var(--good); font-weight: 700; } .hl-bad { color: #ff9a92; font-weight: 700; } .hl-item { color: var(--accent); font-weight: 700; }
+.event-card { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: center; padding: 12px; border-radius: 14px; border: 1px solid color-mix(in srgb, var(--accent) 55%, var(--line)); background: linear-gradient(120deg, color-mix(in srgb, var(--accent) 14%, var(--panel-2)), var(--panel-2)); }
+.event-card .pf { width: 76px; height: 76px; }
+.event-card .dot { width: 76px; height: 76px; border-radius: 14px; background: var(--bg); display: grid; place-items: center; font-size: 34px; }
+.event-card .et { font-size: 12px; color: var(--accent); font-weight: 700; }
+.event-card p { margin: 2px 0 0; font-size: 14.5px; }
+.event-card.bad { border-color: #7a2f2b; background: #2b1a22; } .event-card.bad .et { color: #ff9a92; }
+.noise-line { margin-top: 8px; font-size: 13px; color: var(--muted); padding: 8px 10px; border-radius: 10px; background: var(--bg); }
+.noise-line b { color: var(--accent); }
+@media (max-width: 820px) { .gain { padding: 6px 10px; } .gain .gv { font-size: 19px; } .event-card .pf, .event-card .dot { width: 56px; height: 56px; } }
+/* 생존자 선택 화면 */
+.select { min-height: 100%; display: flex; flex-direction: column; }
+.sel-wrap { width: min(1180px, 100%); margin: 0 auto; padding: 18px 16px 0; flex: 1; }
+.sel-head { display: flex; gap: 14px; align-items: flex-start; }
+.sel-head .btn { white-space: nowrap; flex: none; }
+@media (max-width: 560px) { .sel-head { flex-direction: column; gap: 8px; } }
+.sel-head h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.1; }
+.sel-head p { margin: 6px 0 0; color: var(--muted); max-width: 70ch; }
+.sel-quick { display: flex; gap: 6px; flex-wrap: wrap; margin: 14px 0 12px; }
+.sel-quick .btn { padding: 7px 12px; font-size: 14px; }
+.sel-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; padding-bottom: 16px; }
+.selcard { position: relative; border-radius: 14px; border: 2px solid var(--line); background: var(--panel); overflow: hidden; transition: border-color .12s, transform .08s; }
+.selcard.on { border-color: var(--c); background: color-mix(in srgb, var(--c) 10%, var(--panel)); }
+.selcard:not(.on) .selmain { opacity: .62; }
+.selmain { width: 100%; background: none; border: 0; padding: 12px 12px 30px; text-align: left; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; align-items: start; }
+.selmain .pf { width: 72px; height: 72px; grid-row: span 3; border-radius: 14px; }
+.selmain .nm { font-family: var(--display); font-size: 24px; line-height: 1.05; }
+.selmain .rl { font-size: 12.5px; color: var(--muted); }
+.selmain .tr { grid-column: 1 / -1; font-size: 12.5px; color: var(--muted); margin-top: 6px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.selmain .tr b { color: var(--text); font-weight: 500; }
+.selcheck { position: absolute; top: 10px; right: 10px; width: 26px; height: 26px; border-radius: 99px; border: 2px solid var(--line); display: grid; place-items: center; font-weight: 700; font-size: 14px; color: #0f1624; pointer-events: none; }
+.selcard.on .selcheck { background: var(--c); border-color: var(--c); }
+.selrec { position: absolute; top: 12px; right: 44px; font-size: 11px; color: var(--accent); pointer-events: none; }
+.seldetail { position: absolute; bottom: 8px; right: 10px; font-size: 12px; }
+.sel-bar { position: sticky; bottom: 0; z-index: 5; background: var(--panel); border-top: 1px solid var(--line); padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px)); }
+.sel-bar-in { width: min(1180px, 100%); margin: 0 auto; display: flex; align-items: center; gap: 14px; }
+.sel-count { font-family: var(--display); font-size: 30px; line-height: 1; white-space: nowrap; }
+.sel-count small { font-family: var(--body); font-size: 13px; color: var(--muted); display: block; margin-top: 3px; }
+.sel-faces { display: flex; gap: 4px; flex-wrap: wrap; flex: 1; min-width: 0; }
+.sel-hint { font-size: 13.5px; }
+@media (max-width: 980px) { .sel-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) {
+  .sel-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .selmain { grid-template-columns: 1fr; justify-items: center; text-align: center; padding: 10px 8px 26px; }
+  .selmain .pf { grid-row: auto; width: 64px; height: 64px; }
+  .selmain .nm { font-size: 20px; }
+  .selmain .tr { display: none; }
+  .selrec { top: 8px; left: 8px; right: auto; }
+  .seldetail { left: 0; right: 0; text-align: center; }
+  .sel-bar-in { flex-wrap: wrap; gap: 8px; }
+  .sel-faces { order: 3; flex-basis: 100%; }
+  .sel-bar .cta { flex: 1; }
+}
 .toast { z-index: 50; position: fixed; left: 50%; top: calc(74px + env(safe-area-inset-top, 0px)); transform: translateX(-50%); background: var(--accent); color: #1b1404; font-weight: 700; padding: 9px 18px; border-radius: 8px; z-index: 30; box-shadow: 0 6px 24px rgba(0,0,0,.4); max-width: 90vw; }
 .toast.err { background: var(--danger); color: #fff; }
 
 /* ===== 중간 화면: 기록을 아래로 ===== */
+@media (max-width: 1520px) and (min-width: 821px) {
+  .hud { gap: 10px; }
+  .step { padding: 4px 8px; }
+  .step-arrow { display: none; }
+  .res { gap: 4px; }
+  .chip { padding: 5px 8px; gap: 5px; }
+  .chip .bar { width: 36px; }
+  .hud-menu .btn { padding: 6px 8px; }
+}
 @media (max-width: 1280px) {
   .main { grid-template-columns: 300px minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) 160px; }
   .main > .col-log { grid-column: 1 / -1; }
@@ -303,7 +414,9 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; letter-sp
   .roster { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
   .card { grid-template-columns: 1fr; justify-items: center; text-align: center; padding: 6px 4px; border-left-width: 1px; border-top: 3px solid var(--c); }
   .card .pf { grid-row: auto; width: 44px; height: 44px; }
-  .card .crole, .card .tags { display: none; }
+  .card .crole { display: none; }
+  .card .tags { justify-content: center; min-height: 0; gap: 2px; }
+  .card .tag { font-size: 10px; line-height: 15px; padding: 0 5px; }
   .hp > span:first-child, .hp > span:last-child { display: none; }
   .card .hp { width: 100%; padding: 0 4px; }
   .task { top: 2px; right: 2px; font-size: 10px; padding: 0 5px; }
@@ -318,6 +431,7 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; letter-sp
   .hint { order: -1; flex: 1 1 100%; font-size: 13px; }
   .cta { flex: 1; min-width: 0; padding: 12px; font-size: 16px; }
   .toast { top: calc(12px + env(safe-area-inset-top, 0px)); }
+  .toast.info { top: auto; bottom: calc(128px + env(safe-area-inset-bottom, 0px)); }
   .plan-foot { position: static; margin: 12px 0 0; padding: 0; background: none; border: 0; box-shadow: none; }
   .preview { grid-template-columns: 1fr; }
 }
@@ -444,35 +558,43 @@ var Game = (function () {
 
   /* 승리 조건: 학교 탈출 등은 이 배열에 추가해 확장 */
   const VICTORY_CONDITIONS = [
-    { id: 'survive', check: (s) => s.day > 14, title: '15일째 아침을 맞았다',
-      text: '학교는 여전히 위험하지만, 생존반은 2주를 버텨냈다. 이제 탈출을 준비할 차례다. (학교 탈출 단계는 다음 확장에서 이어집니다.)' },
-    { id: 'rescue', check: (s) => s.rescueSignals >= 6, title: '구조 신호에 응답이 왔다',
-      text: '옥상에서 보낸 신호를 누군가 받았다. 무전기 너머로 합류 지점이 전해진다. (탈출 작전은 다음 확장에서 이어집니다.)' },
+    { id: 'survive', check: (s) => s.day > 14 && !s.rescue, title: '15일째 아침을 맞았다',
+      text: '학교는 여전히 위험하지만, 생존반은 2주를 버텨냈다. (임시 승리 — 옥상 구조 신호로 탈출하는 길도 있다.)' },
+    // 옥상 탈출은 attemptEscape()에서 직접 엔딩을 만든다.
   ];
 
   /* ---------- 상태 ---------- */
-  function newGame() {
+  /* 함께할 생존자: 5~8명. 잘못된 값이면 8명 전원 */
+  const ROSTER_MIN = 5, ROSTER_MAX = 8;
+  const RECOMMENDED = ['hyerin', 'dongkeun', 'juyeon', 'pyeongoh', 'yongchan'];
+  function normalizeRoster(roster) {
+    const ids = Array.isArray(roster) ? CHARACTERS.map((c) => c.id).filter((id) => roster.includes(id)) : [];
+    return ids.length >= ROSTER_MIN && ids.length <= ROSTER_MAX ? ids : CHARACTERS.map((c) => c.id);
+  }
+  function newGame(roster) {
+    const ids = normalizeRoster(roster);
     const s = {
-      version: 1, day: 1, phase: 'morning', ended: null,
-      food: 16, materials: 2, medicine: 1, uvBattery: 0, noisemakers: 0,
+      version: 1, day: 1, phase: 'morning', ended: null, roster: ids,
+      food: ids.length * 2, materials: 2, medicine: 1, uvBattery: 0, noisemakers: 0,
       morale: 60, threat: 20, defense: 20, prep: 0,
       intel: 0, locationNotes: {}, rescueSignals: 0, hungerDays: 0,
       weather: 'sunny', noiseToday: 0, injuredToday: false, defenders: [],
       gayoonMental: 25, dongkeunTrust: 30, juyeonIdea: false, crisisFlag: false,
       night: { uv: false, hush: false, ration: false },
       assignments: [],
-      survivors: CHARACTERS.map((c) => ({ id: c.id, hp: c.maxHp, maxHp: c.maxHp, status: 'ok', dyingDays: 0 })),
+      survivors: CHARACTERS.filter((c) => ids.includes(c.id)).map((c) => ({ id: c.id, hp: c.maxHp, maxHp: c.maxHp, status: 'ok', dyingDays: 0 })),
       log: [], summary: null,
       stats: { explores: 0, raids: 0, repelled: 0, deaths: 0, crafted: 0 },
     };
-    addLog(s, '아침', '좀비 사태 발생 직후. 생존자 8명이 학교 교실에 바리케이드를 치고 모였다.', 'neutral');
-    addLog(s, '아침', '가윤은 충격으로 멍하니 앉아 있다. 누군가 말을 걸어주면 정신을 차릴지도 모른다.', 'warn');
+    addLog(s, '아침', `좀비 사태 발생 직후. 생존자 ${ids.length}명(${ids.map(nm).join(', ')})이 학교 교실에 바리케이드를 치고 모였다.`, 'neutral');
+    if (ids.includes('gayoon')) addLog(s, '아침', '가윤은 충격으로 멍하니 앉아 있다. 누군가 말을 걸어주면 정신을 차릴지도 모른다.', 'warn');
     morningReport(s);
     return s;
   }
 
   /* ---------- 상태 조회 ---------- */
-  const sv = (s, id) => s.survivors.find((p) => p.id === id);
+  const sv = (s, id) => s.survivors.find((p) => p.id === id) || { id, status: 'dead', hp: 0, maxHp: 1, dyingDays: 0, absent: true };
+  const inRoster = (s, id) => s.survivors.some((p) => p.id === id);
   const able = (s, id) => sv(s, id).status === 'ok';
   const aliveList = (s) => s.survivors.filter((p) => p.status !== 'dead');
   const ableList = (s) => s.survivors.filter((p) => p.status === 'ok');
@@ -562,9 +684,18 @@ var Game = (function () {
     return clamp(Math.round(s.threat + nightNoise(s) * 1.2 + 4 + (s.injuredToday ? 4 : 0)), 0, 100);
   }
   function uvActive(s) { return s.night.uv && s.uvBattery > 0; }
+  /* 습격 확률(%) = 예상 위협도×0.9 − 방어력×0.5 − 방어 준비×0.8 − UV 25%포인트, 범위 3~85%.
+     UV는 ‘현재 확률의 25%’가 아니라 확률에서 25%포인트를 뺀다(최저 3%). */
+  const UV_POINTS = 25, RAID_MIN = 3, RAID_MAX = 85;
   function raidChance(s, threat) {
     const t = threat == null ? projectedThreat(s) : threat;
-    return Math.round(clamp(t * 0.9 - s.defense * 0.5 - s.prep * 0.8 - (uvActive(s) ? 25 : 0), 3, 85));
+    return Math.round(clamp(t * 0.9 - s.defense * 0.5 - s.prep * 0.8 - (uvActive(s) ? UV_POINTS : 0), RAID_MIN, RAID_MAX));
+  }
+  /* 밤 대비 옵션 하나를 바꿨다고 가정했을 때의 습격 확률·식량 (상태는 바꾸지 않음) */
+  function nightPreview(s, key, val) {
+    const night = Object.assign({}, s.night, { [key]: val });
+    const tmp = Object.assign({}, s, { night });
+    return { raid: raidChance(tmp), threat: projectedThreat(tmp), food: foodForecast(tmp) };
   }
   function defendValue(s, sid) {
     let v = 15;
@@ -715,6 +846,11 @@ var Game = (function () {
         if (m) txt += ' 재료 1개도 챙겼다.';
         if (a.sid === 'pyeongoh') { s.defense += 6; txt += ' 평오가 방어 취약점을 정리했다. 방어 +6'; }
         addLog(s, P, txt, 'good');
+      } else if (L.loot === 'signal' && s.rescue) {
+        const v = s.weather === 'fog' ? 4 : 8;
+        const before = s.rescue.lz;
+        s.rescue.lz = Math.min(LZ_MAX, s.rescue.lz + v);
+        addLog(s, P, `${josa(who, '이/가')} 옥상의 잔해를 치워 헬기 착륙 지점을 넓혔다.${s.weather === 'fog' ? ' (안개로 작업이 더뎠다)' : ''} 탈출 성공률 +${s.rescue.lz - before} (정리 ${s.rescue.lz}/${LZ_MAX})`, 'good');
       } else if (L.loot === 'signal') {
         if (s.weather === 'fog') {
           s.threat -= 4;
@@ -914,7 +1050,7 @@ var Game = (function () {
       } },
     { id: 'yongchan_snack', tone: 'neutral', when: (s) => able(s, 'yongchan') && s.food >= 4, weight: () => 0.9,
       run: (s) => { s.food -= 2; s.morale += 4; return '용찬이 숨겨둔 식량으로 몰래 야식 파티를 열었다. 들켰지만 다들 한 입씩 먹었다. 식량 −2, 사기 +4'; } },
-    { id: 'rescue_signal', tone: 'good', when: (s) => s.day >= 3, weight: () => 0.8,
+    { id: 'rescue_signal', tone: 'good', when: (s) => s.day >= 3 && !s.rescue, weight: () => 0.8,
       run: (s) => { s.rescueSignals += 1; return `밤하늘 너머 아파트에서 손전등 신호가 깜빡였다. 누군가 있다. 구조 신호 ${s.rescueSignals}/6`; } },
     { id: 'dongkeun_alone', tone: 'neutral', when: (s) => able(s, 'dongkeun'), weight: () => 1,
       run: (s) => {
@@ -946,19 +1082,48 @@ var Game = (function () {
   }
 
   /* ---------- 2·3단계: 낮 행동 실행 → 결과 ---------- */
+  function hpLabel(p) {
+    if (p.status === 'dead') return '사망';
+    if (p.status === 'dying') return '빈사';
+    if (p.hp < p.maxHp * 0.4) return '중상';
+    if (p.hp < p.maxHp * 0.75) return '부상';
+    return '양호';
+  }
+  function people(s) {
+    const g = inRoster(s, 'gayoon'), d = inRoster(s, 'dongkeun'), j = inRoster(s, 'juyeon');
+    return { hp: Object.fromEntries(s.survivors.map((p) => [p.id, hpLabel(p)])), mind: g ? gayoonState(s) : null, mental: g ? s.gayoonMental : null,
+      trust: d ? trustLabel(s) : null, trustN: d ? s.dongkeunTrust : null, idea: j ? s.juyeonIdea : false };
+  }
+  function peopleChanges(a, b) {
+    const out = [];
+    for (const c of CHARACTERS) {
+      if (!(c.id in a.hp) || !(c.id in b.hp)) continue;
+      if (a.hp[c.id] !== b.hp[c.id]) out.push({ id: c.id, text: `${c.name} · ${a.hp[c.id]} → ${b.hp[c.id]}`, tone: ['사망', '빈사', '중상'].includes(b.hp[c.id]) ? 'bad' : (b.hp[c.id] === '양호' || a.hp[c.id] === '빈사') ? 'good' : 'neutral' });
+    }
+    if (a.mind !== b.mind) out.push({ id: 'gayoon', text: `가윤 · ${a.mind}에서 ${b.mind}으로 (안정도 ${a.mental} → ${b.mental})`, tone: b.mental > a.mental ? 'good' : 'bad' });
+    else if (a.mental !== b.mental) out.push({ id: 'gayoon', text: `가윤 · 안정도 ${a.mental} → ${b.mental} (${b.mind})`, tone: b.mental > a.mental ? 'good' : 'bad' });
+    if (a.trust !== b.trust) out.push({ id: 'dongkeun', text: `동근 · 신뢰 ${a.trust} → ${b.trust} (${a.trustN} → ${b.trustN})`, tone: b.trustN > a.trustN ? 'good' : 'bad' });
+    else if (a.trustN !== b.trustN) out.push({ id: 'dongkeun', text: `동근 · 신뢰도 ${a.trustN} → ${b.trustN}`, tone: b.trustN > a.trustN ? 'good' : 'bad' });
+    if (!a.idea && b.idea) out.push({ id: 'juyeon', text: '주연 · 아이디어가 떠올랐다 (다음 제작 대성공)', tone: 'good' });
+    if (a.idea && !b.idea) out.push({ id: 'juyeon', text: '주연 · 아이디어를 사용했다', tone: 'neutral' });
+    return out;
+  }
   function snapshot(s) {
     return { food: s.food, materials: s.materials, medicine: s.medicine, morale: s.morale, threat: s.threat,
-      defense: s.defense, hp: s.survivors.reduce((a, p) => a + p.hp, 0), alive: aliveCount(s), signals: s.rescueSignals };
+      defense: s.defense, hp: s.survivors.reduce((a, p) => a + p.hp, 0), alive: aliveCount(s), signals: s.rescueSignals,
+      uvBattery: s.uvBattery, noisemakers: s.noisemakers, lz: s.rescue ? s.rescue.lz : 0 };
   }
   function deltas(a, b) {
     const keys = [['food', '식량'], ['materials', '재료'], ['medicine', '의약품'], ['morale', '사기'], ['threat', '위협도'],
-      ['defense', '방어'], ['hp', '총 체력'], ['alive', '생존자'], ['signals', '구조 신호']];
+      ['defense', '방어'], ['hp', '총 체력'], ['alive', '생존자'], ['signals', '구조 신호'],
+      ['uvBattery', 'UV 배터리'], ['noisemakers', '소음기'], ['lz', '착륙 지점']];
     return keys.filter(([k]) => b[k] !== a[k]).map(([k, label]) => ({ key: k, label, v: b[k] - a[k] }));
   }
   function runDay(s) {
     if (s.ended) return { ok: false, error: '게임이 끝났습니다.' };
     if (s.phase !== 'morning') return { ok: false, error: '이미 낮 행동을 마쳤습니다.' };
-    const before = snapshot(s);
+    if (escapeToday(s)) return { ok: false, error: '구조 헬기가 왔습니다. 탈출을 시도하거나 다음 기회로 미루세요.' };
+    const before = snapshot(s), beforePeople = people(s);
     s.noiseToday = 0; s.prep = 0; s.defenders = []; s.injuredToday = false;
     if (s.assignments.length === 0) addLog(s, P, '오늘은 아무도 밖에 나가지 않았다.', 'neutral');
     const busy = new Set();
@@ -977,11 +1142,12 @@ var Game = (function () {
       addLog(s, '사건', e.run(s), e.tone === 'good' ? 'good' : e.tone === 'bad' ? 'bad' : 'neutral');
       normalize(s);
     }
+    checkRescue(s, P);
     if (s.noiseToday > 0) addLog(s, P, `오늘 발생한 소음 합계 ${s.noiseToday}. 밤에 좀비들이 소리 난 곳을 조사하러 올 수 있다.`, s.noiseToday >= 10 ? 'warn' : 'neutral');
     s.assignments = [];
     s.night = { uv: false, hush: false, ration: false };
     s.phase = 'evening';
-    s.summary = { title: `${s.day}일차 낮 행동 결과`, deltas: deltas(before, snapshot(s)) };
+    s.summary = { title: `${s.day}일차 낮 행동 결과`, deltas: deltas(before, snapshot(s)), people: peopleChanges(beforePeople, people(s)) };
     return { ok: true };
   }
   function setNightOption(s, key, val) {
@@ -1055,20 +1221,28 @@ var Game = (function () {
   }
 
   /* ---------- 5단계: 하루 정산 ---------- */
+  /* 오늘 밤 식량 소비 예측. 저녁 화면의 숫자와 실제 정산이 모두 이 함수를 쓴다.
+     기본 소비: 살아 있는 사람 수(배급 절약이면 절반, 올림). 용찬 추가 소비: 용찬이 살아 있고
+     배급 절약이 아니며 기본 소비 뒤 식량이 1개 이상 남았을 때만 1개. */
+  function foodForecast(s) {
+    const alive = aliveCount(s), ration = !!s.night.ration;
+    const base = ration ? Math.ceil(alive / 2) : alive;
+    const baseEaten = Math.min(s.food, base);
+    const short = base - baseEaten;
+    const yong = sv(s, 'yongchan').status !== 'dead';
+    const extra = yong && !ration && s.food - baseEaten >= 1 ? 1 : 0;
+    return { alive, ration, base, baseEaten, short, extra, total: baseEaten + extra, after: s.food - baseEaten - extra,
+      yongchanSkips: yong && able(s, 'yongchan') && !extra };
+  }
   function settle(s) {
     const S = '정산';
-    const alive = aliveList(s), n = alive.length;
-    const ration = s.night.ration;
-    const need = ration ? Math.ceil(n / 2) : n;
-    const eaten = Math.min(s.food, need);
-    s.food -= eaten;
-    const short = need - eaten;
-    addLog(s, S, `생존자 ${n}명이 식량 ${eaten}개를 소비했다.${ration ? ' (배급 절약: 절반만 먹음)' : ''}`, 'neutral');
+    const f = foodForecast(s);
+    const ration = f.ration, short = f.short, n = f.alive;
+    s.food -= f.baseEaten;
+    addLog(s, S, `생존자 ${n}명이 식량 ${f.baseEaten}개를 소비했다.${ration ? ' (배급 절약: 절반만 먹음)' : ''}`, 'neutral');
     // 용찬 추가 소비 (기본 소비와 별개)
-    if (able(s, 'yongchan') || sv(s, 'yongchan').status === 'dying') {
-      if (!ration && s.food >= 1) { s.food -= 1; addLog(s, S, '용찬 특성: 용찬이 식량 1개를 추가로 먹었다. (기본 소비와 별도)', 'neutral'); }
-      else if (able(s, 'yongchan')) { s.morale -= 2; addLog(s, S, '용찬: “배고파서 좀비가 치킨으로 보여…” 용찬의 불만으로 사기 −2', 'warn'); }
-    }
+    if (f.extra) { s.food -= 1; addLog(s, S, '용찬 특성: 용찬이 식량 1개를 추가로 먹었다. (기본 소비와 별도)', 'neutral'); }
+    else if (f.yongchanSkips) { s.morale -= 2; addLog(s, S, '용찬: “배고파서 좀비가 치킨으로 보여…” 용찬의 불만으로 사기 −2', 'warn'); }
     if (ration) {
       s.morale -= 4;
       for (const p of ableList(s)) p.hp = Math.max(1, p.hp - 3);
@@ -1129,7 +1303,7 @@ var Game = (function () {
   function runNight(s) {
     if (s.ended) return { ok: false, error: '게임이 끝났습니다.' };
     if (s.phase !== 'evening') return { ok: false, error: '먼저 낮 행동을 실행하세요.' };
-    const before = snapshot(s);
+    const before = snapshot(s), beforePeople = people(s);
     nightPhase(s);
     settle(s);
     const dayDone = s.day;
@@ -1143,22 +1317,134 @@ var Game = (function () {
     } else {
       addLog(s, '정산', s.ended.type === 'victory' ? `🏁 ${s.ended.title}` : `☠ ${s.ended.title}`, s.ended.type === 'victory' ? 'good' : 'bad');
     }
-    s.summary = { title: `${dayDone}일차 밤·정산 보고`, deltas: deltas(before, snapshot(s)) };
+    s.summary = { title: `${dayDone}일차 밤·정산 보고`, deltas: deltas(before, snapshot(s)), people: peopleChanges(beforePeople, people(s)) };
     return { ok: true };
   }
 
+
+  /* ---------- 옥상 탈출 작전 ----------
+     구조 신호 6회 → 구조대 응답, 2일 뒤 아침 헬기 도착 → 그날 아침 탈출 작전.
+     성공 확률(%) = 60 − 위협도×0.45 + 이동 방법 + 후위 + 날씨 + 착륙 지점 정리 − 빈사자×6 − 낮은 사기 8, 범위 10~95.
+     실패해도 게임은 끝나지 않는다: 후위가 다치고 위협도 +15, 헬기는 2일 뒤 다시 온다. */
+  const RESCUE_SIGNALS = 6, RESCUE_WAIT = 2, LZ_MAX = 24;
+  const ESCAPE_TACTICS = {
+    quiet: { name: '조용히 이동', icon: '🤫', bonus: 6, need: null, desc: '숨죽여 계단을 오른다' },
+    uv:    { name: 'UV 랜턴으로 밝히기', icon: '🔦', bonus: 20, need: 'uvBattery', desc: '빛으로 좀비를 밀어낸다 · 배터리 1' },
+    decoy: { name: '소음기로 유인', icon: '📢', bonus: 16, need: 'noisemakers', desc: '좀비를 체육관으로 · 소음기 1' },
+    rush:  { name: '강행 돌파', icon: '🏃', bonus: 0, need: null, desc: '그냥 뛴다 · 실패 시 피해 큼' },
+  };
+  const GUARD_BONUS = (s, id) => (id === 'dongkeun' || id === 'minseong') ? 12 : (id === 'gayoon' && gayoonState(s) === '안정') ? 10 : 4;
+  const WEATHER_ESC = { sunny: 10, cloudy: 3, rain: -3, fog: -12 };
+  function rescueDaysLeft(s) { return s.rescue ? s.rescue.due - s.day : null; }
+  function escapeToday(s) { return !!s.rescue && !s.ended && s.phase === 'morning' && s.rescue.due <= s.day; }
+  function checkRescue(s, phase) {
+    if (s.rescue || s.rescueSignals < RESCUE_SIGNALS) return;
+    s.rescue = { due: s.day + RESCUE_WAIT, attempts: 0, lz: 0 };
+    addLog(s, phase, `🚁 구조대가 응답했다! “${RESCUE_WAIT}일 뒤 아침, 옥상으로 헬기를 보내겠다.” 그때까지 버티자. 이제 옥상 탐색은 착륙 지점 정리로 바뀐다.`, 'good');
+  }
+  function escapeChance(s, plan) {
+    const parts = [{ label: '기본', v: 60 }];
+    const add = (label, v) => { v = Math.round(v); if (v) parts.push({ label, v }); };
+    add(`위협도 ${s.threat}`, -s.threat * 0.45);
+    const T = ESCAPE_TACTICS[plan.tactic];
+    if (T) add(T.name, T.bonus);
+    if (plan.guard && CHAR[plan.guard]) add(`후위 ${nm(plan.guard)}`, GUARD_BONUS(s, plan.guard));
+    add(`날씨 ${WEATHER[s.weather].name}`, WEATHER_ESC[s.weather]);
+    add('착륙 지점 정리', s.rescue ? s.rescue.lz : 0);
+    const dying = s.survivors.filter((p) => p.status === 'dying').length;
+    add(`빈사자 ${dying}명 업고 이동`, -6 * dying);
+    if (s.morale < 30) add('낮은 사기', -8);
+    const raw = parts.reduce((a, x) => a + x.v, 0);
+    return { chance: Math.round(clamp(raw, 10, 95)), parts };
+  }
+  function validateEscape(s, plan) {
+    if (s.ended) return '게임이 끝났습니다.';
+    if (!escapeToday(s)) return '오늘은 구조 헬기가 오지 않습니다.';
+    const T = ESCAPE_TACTICS[plan.tactic];
+    if (!T) return '옥상까지 갈 방법을 고르세요.';
+    if (T.need && s[T.need] < 1) return T.need === 'uvBattery' ? 'UV 배터리가 없어요.' : '소음기가 없어요.';
+    if (!plan.guard || !CHAR[plan.guard] || !able(s, plan.guard)) return '맨 뒤를 지킬 생존자를 고르세요.';
+    return null;
+  }
+  function attemptEscape(s, plan) {
+    const err = validateEscape(s, plan);
+    if (err) return { ok: false, error: err };
+    const E = '탈출', T = ESCAPE_TACTICS[plan.tactic], g = plan.guard;
+    const before = snapshot(s), beforePeople = people(s);
+    const { chance } = escapeChance(s, plan);
+    if (T.need) s[T.need] -= 1;
+    s.rescue.attempts += 1;
+    addLog(s, E, `🚁 헬기 프로펠러 소리가 학교를 울린다! ${T.icon} ${T.name}, 맨 뒤는 ${nm(g)}. (성공 확률 ${chance}%)`, 'warn');
+    if (rand() * 100 < chance) {
+      for (const p of s.survivors.filter((x) => x.status === 'dying')) {
+        const carrier = able(s, 'dongkeun') ? '동근' : able(s, 'gayoon') ? '가윤' : nm(ableList(s)[0].id);
+        addLog(s, E, `${josa(carrier, '이/가')} 빈사 상태의 ${josa(nm(p.id), '을/를')} 업고 계단을 올랐다.`, 'good');
+      }
+      const guardLine = {
+        dongkeun: '동근이 마지막까지 옥상 문을 몸으로 막았다. 헬기에 오르며 처음으로 웃었다.',
+        minseong: '민성: “먼저들 타. 아저씨는 원래 마지막에 타는 거야.” 그리고 정말 마지막에 탔다.',
+        gayoon: '가윤이 철문을 혼자 밀어 닫았다. 다들 할 말을 잃었다.',
+      }[g] || `${josa(nm(g), '이/가')} 끝까지 뒤를 지키고 헬기에 뛰어올랐다.`;
+      addLog(s, E, guardLine, 'good');
+      if (able(s, 'yongchan')) addLog(s, E, '용찬: “혹시… 헬기에 간식 있어요?”', 'neutral');
+      if (able(s, 'hyerin')) addLog(s, E, '혜린: “우리 방과후 수업, 이걸로 수료한 거지?”', 'good');
+      const rescued = s.survivors.filter((p) => p.status !== 'dead').map((p) => p.id);
+      const lost = s.survivors.filter((p) => p.status === 'dead').map((p) => nm(p.id));
+      s.ended = { type: 'victory', id: 'escape', title: '옥상 탈출 성공!', rescued,
+        text: `${s.day}일차 아침, ${rescued.length}명이 구조 헬기에 올랐다. 멀어지는 학교 옥상에 생존반이 남긴 거울이 반짝인다.${lost.length ? ` 함께 오지 못한 ${lost.join(', ')}의 이름을 모두가 기억한다.` : ' 한 명도 잃지 않았다.'}` };
+      s.phase = 'ended';
+      addLog(s, E, `🏁 옥상 탈출 성공 — ${rescued.length}명 구조`, 'good');
+      s.summary = { title: `${s.day}일차 탈출 작전 결과`, deltas: deltas(before, snapshot(s)), people: peopleChanges(beforePeople, people(s)) };
+      return { ok: true, success: true, chance };
+    }
+    // 실패: 게임은 계속된다
+    const lost = damage(s, g, randInt(18, 32) * (plan.tactic === 'rush' ? 1.3 : 1), E, true);
+    addLog(s, E, `좀비 떼가 계단으로 몰려들었다! 맨 뒤의 ${josa(nm(g), '이/가')} 막아섰다. 체력 −${lost}`, 'bad');
+    if (plan.tactic === 'rush') {
+      const others = ableList(s).filter((p) => p.id !== g);
+      if (others.length) { const v = pick(others); const l2 = damage(s, v.id, randInt(8, 16), E, true); addLog(s, E, `${nm(v.id)}도 뛰다가 넘어졌다. 체력 −${l2}`, 'bad'); }
+    }
+    s.threat += 15; s.morale -= 6;
+    s.rescue.due = s.day + RESCUE_WAIT;
+    addLog(s, E, `헬기가 착륙하지 못하고 돌아갔다. 무전: “${RESCUE_WAIT}일 뒤 아침에 다시 오겠다.” 위협도 +15, 사기 −6`, 'bad');
+    s.assignments = []; s.prep = 0; s.defenders = []; s.noiseToday = 8; s.injuredToday = true;
+    s.night = { uv: false, hush: false, ration: false };
+    normalize(s);
+    s.phase = 'evening';   // 하루를 탈출 시도에 썼으므로 바로 밤 대비로
+    s.summary = { title: `${s.day}일차 탈출 작전 결과`, deltas: deltas(before, snapshot(s)), people: peopleChanges(beforePeople, people(s)) };
+    return { ok: true, success: false, chance };
+  }
+  function postponeEscape(s) {
+    if (!escapeToday(s)) return { ok: false, error: '오늘은 미룰 탈출이 없습니다.' };
+    s.rescue.due = s.day + RESCUE_WAIT;
+    s.morale -= 2; normalize(s);
+    addLog(s, '아침', `🚁 무전: “아직 준비가 안 됐어요!” 헬기는 돌아갔다. 다음 기회는 ${RESCUE_WAIT}일 뒤 아침. 사기 −2`, 'warn');
+    return { ok: true };
+  }
   /* ---------- 위기 대응 조언 (평오·정민·혜린) ---------- */
   function advice(s) {
+    const out = [];
+    const raw = adviceRaw(s);
+    const ableNames = ableList(s).map((p) => nm(p.id));
+    for (const a of raw) {
+      const speakerId = CHARACTERS.find((c) => c.name === a.who);
+      if (speakerId && able(s, speakerId.id)) out.push(a);
+      else out.push({ who: '', text: a.text.replace('(내가 가면 +2)', '(용찬이 가면 +2)').replace(' 위기 땐 나 행동 하나 더 할 수 있어!', '') });
+    }
+    return out.slice(0, 3);
+  }
+  function adviceRaw(s) {
     const out = [];
     const n = aliveCount(s);
     const dying = s.survivors.filter((p) => p.status === 'dying');
     if (dying.length) out.push({ who: '정민', text: `회복 아이템 타이밍! ${dying.map((p) => `${nm(p.id)}(${3 - p.dyingDays}일 남음)`).join(', ')}부터 치료하자. 의약품이 없어도 응급처치는 된다.` });
-    if (s.food < n) out.push({ who: '용찬', text: `밥이 모자라! 급식실 탐색(내가 가면 +2), 저녁에 배급 절약, 아니면 ‘서둘러’로 크게 털자.` });
+    if (s.food < n) out.push({ who: '용찬', text: `밥이 모자라! 급식실 탐색${inRoster(s, 'yongchan') ? '(내가 가면 +2)' : ''}, 저녁에 배급 절약, 아니면 ‘서둘러’로 크게 털자.` });
     else if (s.food < n * 2) out.push({ who: '평오', text: `식량이 이틀 치도 안 남았어. 오늘 급식실을 한 번은 가는 게 좋겠어.` });
     if (s.threat >= 60) out.push({ who: '정민', text: `몹이 너무 많아. 소음 유인으로 빼고, 방어 준비나 UV 랜턴으로 버티자.${s.noisemakers ? '' : ' 소음기는 재료 1개면 만들 수 있어.'}` });
     if (s.morale < 35) out.push({ who: '혜린', text: '다들 표정이 너무 어두워. 휴식이나 대화로 숨 좀 돌리자. 위기 땐 나 행동 하나 더 할 수 있어!' });
     if (able(s, 'gayoon') && gayoonState(s) !== '안정') out.push({ who: '평오', text: `가윤이 아직 ${gayoonState(s)} 상태야. 누가 말을 걸어주면(대화) 힘을 낼 거야.` });
     if (s.defense < 15) out.push({ who: '평오', text: '방어선이 얇아. 쉘터 정비나 바리케이드 제작을 추천해.' });
+    if (s.rescue && !escapeToday(s)) out.unshift({ who: '정민', text: `헬기까지 ${rescueDaysLeft(s)}일! UV 배터리·소음기를 아껴 두고, 옥상 탐색으로 착륙 지점을 정리하면 성공률이 올라가(지금 +${s.rescue.lz}).` });
     if (!out.length) out.push({ who: '정민', text: `지금은 안정적이야. ${s.weather === 'sunny' ? '햇빛 강한 날엔 옥상에서 구조 신호 보내기 좋아.' : '재료를 모아 UV 랜턴을 준비해두자.'}` });
     return out.slice(0, 3);
   }
@@ -1168,7 +1454,8 @@ var Game = (function () {
     newGame, assign, unassign, validate, describeAssignment, runDay, runNight, setNightOption,
     sv, able, aliveCount, ableList, isCrisis, maxAP, gayoonState, trustLabel, efficiency, available,
     exploreDanger, lureDanger, riskReport, riskLabel, lootRange, projectedThreat, raidChance, defendValue, fortifyValue,
-    advice, josa, nm, normalize,
+    advice, josa, nm, normalize, ROSTER_MIN, ROSTER_MAX, RECOMMENDED, normalizeRoster, inRoster, foodForecast, nightPreview, hpLabel, UV_POINTS, RAID_MIN,
+    ESCAPE_TACTICS, RESCUE_SIGNALS, RESCUE_WAIT, LZ_MAX, rescueDaysLeft, escapeToday, escapeChance, validateEscape, attemptEscape, postponeEscape,
   };
 })();
 </script>
@@ -1202,17 +1489,17 @@ var Game = (function () {
 
   /* ---------- 도우미 ---------- */
   const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  function toast(msg, err) {
-    ui.toast = { msg, err };
+  function toast(msg, err, ms) {
+    ui.toast = { msg, err: err === true, info: err === 'info' };
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => { ui.toast = null; renderToast(); }, 2400);
+    toastTimer = setTimeout(() => { ui.toast = null; renderToast(); }, ms || 2400);
     renderToast();
   }
   function renderToast() {
     let el = document.getElementById('toast');
     if (!ui.toast) { if (el) el.remove(); return; }
     if (!el) { el = document.createElement('div'); el.id = 'toast'; el.setAttribute('role', 'status'); document.body.appendChild(el); }
-    el.className = 'toast' + (ui.toast.err ? ' err' : '');
+    el.className = 'toast' + (ui.toast.err ? ' err' : '') + (ui.toast.info ? ' info' : '');
     el.textContent = ui.toast.msg;
   }
   const okExpr = (x) => (['default', 'smile', 'surprised', 'tired'].includes(x) ? x : 'default');
@@ -1265,7 +1552,7 @@ var Game = (function () {
       const i = ui.intro.idx, c = G.CHARACTERS[i], info = INTRO[c.id];
       ui.intro.seen = ui.intro.seen || {}; ui.intro.seen[i] = true;
       const last = i === G.CHARACTERS.length - 1;
-      const nextLabel = last ? (ui.intro.from === 'first' ? '튜토리얼 시작 ›' : '닫기') : '다음 ›';
+      const nextLabel = last ? (ui.intro.from === 'first' ? '생존자 고르기 ›' : '닫기') : '다음 ›';
       return `<div class="overlay" style="z-index:35"><div class="modal intro-modal" role="dialog" aria-label="생존반 소개" style="--c:${c.color}">
         <div class="intro-top"><h2>생존반 소개 <span class="muted small" style="font-family:var(--body)">${i + 1} / ${G.CHARACTERS.length}</span></h2>
           <button class="linkbtn" data-a="intro-skip">${ui.intro.from === 'first' ? '소개 건너뛰기' : '닫기'}</button></div>
@@ -1285,7 +1572,9 @@ var Game = (function () {
           <button class="btn primary" data-a="intro-next">${nextLabel}</button></div>
       </div></div>`;
     }
-    const k = ui.intro.step, st = TOUR[k];
+    const k = ui.intro.step;
+    const st = Object.assign({}, TOUR[k]);
+    if (k === TOUR.length - 1 && !(S && G.able(S, 'hyerin') && G.able(S, 'gayoon'))) st.text = '생존자 카드를 눌러 첫 행동을 배정해 보세요. 처음엔 급식실 탐색으로 식량을 챙기고, 맑은 날엔 옥상에서 구조 신호를 보내 보세요!';
     return `<div class="tour-block"></div><div class="tour-hole" id="tour-hole"></div>
       <div class="tour-card" id="tour-card" role="dialog" aria-label="튜토리얼">
         <div class="tour-dots">${TOUR.map((_, j) => `<i class="${j === k ? 'on' : ''}"></i>`).join('')}</div>
@@ -1333,6 +1622,7 @@ var Game = (function () {
     }
   }
   const LOC_GIVES = { rooftop: '구조 신호', library: '정보', science: '재료', nurse: '의약품', cafeteria: '식량' };
+  const locGives = (k) => (k === 'rooftop' && S && S.rescue ? '착륙 지점' : LOC_GIVES[k]);
 
   function cardExpr(p) {
     if (p.status === 'dead') return 'default';
@@ -1390,6 +1680,57 @@ var Game = (function () {
       ${ui.modal ? renderModal() : ''}`;
   }
 
+  /* ---------- 생존자 선택 (5~8명) ---------- */
+  const ROSTER_KEY = 'banggwahu-roster-v1';
+  function lastRoster() { try { const r = JSON.parse(localStorage.getItem(ROSTER_KEY)); return Array.isArray(r) ? r : null; } catch (e) { return null; } }
+  function openSelect() {
+    ui.screen = 'select'; ui.modal = null;
+    const last = lastRoster();
+    ui.pick = new Set(last && last.length >= G.ROSTER_MIN ? last : G.CHARACTERS.map((c) => c.id));
+    if (!tutDone()) ui.intro = { type: 'chars', idx: 0, from: 'first' };
+    render();
+  }
+  function renderSelect() {
+    const n = ui.pick.size, ok = n >= G.ROSTER_MIN && n <= G.ROSTER_MAX;
+    const cards = G.CHARACTERS.map((c, i) => {
+      const on = ui.pick.has(c.id), rec = G.RECOMMENDED.includes(c.id);
+      return `<div class="selcard ${on ? 'on' : ''}" style="--c:${c.color}">
+        <button class="selmain" data-a="pick-toggle" data-v="${c.id}" aria-pressed="${on}" aria-label="${c.name} ${on ? '빼기' : '넣기'}">
+          ${pf(c.id, on ? 'smile' : 'default')}
+          <span class="nm" style="color:${c.color}">${c.name}</span>
+          <span class="rl">${c.role} · 체력 ${c.maxHp}</span>
+          <span class="rl"><b style="color:var(--text);font-weight:500">${c.trait}</b></span>
+          <span class="tr">${esc(c.traitDesc)}</span>
+        </button>
+        <span class="selcheck" aria-hidden="true">${on ? '✓' : ''}</span>
+        ${rec ? '<span class="selrec">⭐ 추천</span>' : ''}
+        <button class="linkbtn seldetail" data-a="pick-detail" data-v="${i}">자세히</button>
+      </div>`;
+    }).join('');
+    const hint = n < G.ROSTER_MIN ? `<b style="color:var(--accent)">${G.ROSTER_MIN - n}명</b> 더 골라 주세요. (최소 ${G.ROSTER_MIN}명)` : `시작 식량 <b>${n * 2}개</b> · 하루 행동 칸 3칸`;
+    app.innerHTML = `
+      <div class="tape"></div>
+      <div class="select">
+        <div class="sel-wrap">
+          <div class="sel-head"><button class="btn ghost" data-a="menu" aria-label="메인으로">‹ 메인</button>
+            <div><h1>함께할 생존자를 고르세요</h1>
+            <p>${G.ROSTER_MIN}~${G.ROSTER_MAX}명을 고를 수 있어요. 인원이 적으면 먹을 입이 줄고, 많으면 다양한 능력을 쓸 수 있어요. 고르지 않은 생존자는 이번 게임에 등장하지 않아요.</p></div></div>
+          <div class="sel-quick">
+            <button class="btn" data-a="pick-rec" title="${G.RECOMMENDED.map(G.nm).join(', ')}">⭐ 추천 5인 <span class="muted small">식량·분석·제작·방어·분위기</span></button>
+            <button class="btn" data-a="pick-all">전원 선택</button>
+            <button class="btn" data-a="pick-none">모두 해제</button>
+          </div>
+          <div class="sel-grid">${cards}</div>
+        </div>
+        <footer class="sel-bar"><div class="sel-bar-in">
+          <div class="sel-count">${n}명<small>/ ${G.ROSTER_MIN}~${G.ROSTER_MAX}명</small></div>
+          <div class="sel-faces" aria-label="고른 생존자">${G.CHARACTERS.filter((c) => ui.pick.has(c.id)).map((c) => pf(c.id, 'smile', 'sm')).join('')}<span class="sel-hint" style="align-self:center;margin-left:6px">${hint}</span></div>
+          <button class="btn primary cta" data-a="start-game" ${ok ? '' : 'disabled'}>이 생존반으로 시작 ›</button>
+        </div></footer>
+      </div>
+      ${ui.modal ? renderModal() : ''}`;
+  }
+
   function renderModal() {
     if (ui.modal === 'help') return `
       <div class="overlay" data-a="close-modal"><div class="modal" role="dialog" aria-label="게임 설명" data-stop>
@@ -1408,13 +1749,26 @@ var Game = (function () {
         <ul>
           <li>식량 1개 = 한 사람의 하루 식사. 밤마다 생존자 수만큼 먹고, 용찬은 1개를 더 먹는다.</li>
           <li>행동마다 소음이 생기고, 소음은 밤에 위협도를 올린다. 위협도가 높으면 습격 확률이 오른다.</li>
-          <li>맑은 날 햇빛은 낮 탐색을 안전하게 하고, UV 랜턴은 밤 습격을 억제한다.</li>
+          <li>맑은 날 햇빛은 낮 탐색을 안전하게 한다. UV 랜턴은 밤 습격 확률에서 25%포인트를 뺀다(최저 3%). 예: 19% → 3%, 59% → 34%.</li>
           <li>체력 0은 빈사. 3일 안에 치료하면 살아난다.</li>
-          <li>15일째 아침을 맞거나 옥상에서 구조 신호 6회를 보내면 승리.</li>
+          <li><b>탈출</b>: 옥상 탐색으로 구조 신호를 6번 보내면 구조대가 응답하고, 2일 뒤 아침 헬기가 온다. 그날 이동 방법과 후위를 정해 탈출 작전에 성공하면 승리! 실패해도 2일 뒤 다시 온다.</li>
+          <li>15일째 아침까지 버텨도 임시 승리(헬기를 기다리는 중엔 탈출이 먼저).</li>
         </ul>
         <p class="muted small">진행 상황은 이 브라우저에 자동 저장된다.</p>
         <button class="btn primary" data-a="close-modal">닫기</button>
       </div></div>`;
+    if (ui.modal === 'confirm-day' && S) {
+      const max = G.maxAP(S), n = S.assignments.length, left = max - n;
+      let slots = '';
+      for (let i = 0; i < max; i++) { const a = S.assignments[i]; slots += a ? `<span class="slot assign">${pf(a.sid)}<span class="si">${ACT_ICON[a.action]}</span></span>` : '<span class="slot">빈 칸</span>'; }
+      return `
+      <div class="overlay" data-a="close-modal"><div class="modal" role="dialog" aria-label="남은 행동 확인" data-stop>
+        <h2>남은 행동을 포기할까요?</h2>
+        <p>행동 칸 ${max}개 중 <b>${n}개</b>만 채웠어요. 이대로 진행하면 <b style="color:var(--accent)">${left}칸</b>을 쓰지 못하고 저녁이 돼요.</p>
+        <div class="confirm-slots">${slots}</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" data-a="close-modal">돌아가서 배정하기</button><button class="btn" data-a="run-day-go">${left}칸 포기하고 진행</button></div>
+      </div></div>`;
+    }
     if (ui.modal === 'reset') return `
       <div class="overlay" data-a="close-modal"><div class="modal" role="dialog" aria-label="처음부터" data-stop>
         <h2>처음부터 다시 할까?</h2>
@@ -1465,13 +1819,15 @@ var Game = (function () {
       <div class="day-badge">${S.day}일차<small>${{ morning: '아침 · 행동 선택', evening: '저녁 · 밤 대비', ended: '종료' }[S.phase]}</small></div>
       <nav class="steps" aria-label="오늘의 진행 단계">${steps}</nav>
       <div class="res">
-        <span class="chip ${foodLow ? 'warn' : ''}" title="식량: 밤마다 생존자 1명당 1개">🍞 <b>${S.food}</b><span class="muted small">/ 필요 ${alive}</span></span>
-        <span class="chip ${S.morale < 30 ? 'warn' : ''}" title="사기: 낮으면 행동 효율이 떨어짐">💛 <b>${S.morale}</b>${bar(S.morale, S.morale < 30 ? 'var(--danger)' : 'var(--morale)')}</span>
-        <span class="chip ${S.threat >= 60 ? 'warn' : ''}" title="위협도: 높을수록 밤 습격 확률↑">☣️ <b>${S.threat}</b>${bar(S.threat, S.threat >= 60 ? 'var(--danger)' : 'var(--threat)')}</span>
-        <span class="chip" title="방어력">🛡️ <b>${S.defense}</b></span>
-        <span class="chip mini" title="재료 · 의약품 · UV 배터리 · 소음기">🧰${S.materials} 💊${S.medicine} 🔦${S.uvBattery} 📢${S.noisemakers}</span>
-        <span class="chip mini" title="구조 신호 (6회면 승리)">📡 ${S.rescueSignals}/6</span>
-        <span class="chip" title="날씨 · 햇빛">${W.icon} ${W.name}</span>
+        <button type="button" class="chip ${foodLow ? 'warn' : ''}" data-a="hud-info" data-v="food" title="식량 — 눌러서 설명 보기">🍞 <b>${S.food}</b><span class="muted small">/ 필요 ${alive}</span></button>
+        <button type="button" class="chip ${S.morale < 30 ? 'warn' : ''}" data-a="hud-info" data-v="morale" title="사기 — 눌러서 설명 보기">💛 <b>${S.morale}</b>${bar(S.morale, S.morale < 30 ? 'var(--danger)' : 'var(--morale)')}</button>
+        <button type="button" class="chip ${S.threat >= 60 ? 'warn' : ''}" data-a="hud-info" data-v="threat" title="위협도 — 눌러서 설명 보기">☣️ <b>${S.threat}</b>${bar(S.threat, S.threat >= 60 ? 'var(--danger)' : 'var(--threat)')}</button>
+        <button type="button" class="chip" data-a="hud-info" data-v="defense" title="방어력 — 눌러서 설명 보기">🛡️ <b>${S.defense}</b></button>
+        <button type="button" class="chip mini" data-a="hud-info" data-v="items" title="물자 — 눌러서 설명 보기">🧰${S.materials} 💊${S.medicine} 🔦${S.uvBattery} 📢${S.noisemakers}</button>
+        ${S.rescue
+          ? `<button type="button" class="chip heli ${G.escapeToday(S) ? 'warn' : ''}" data-a="hud-info" data-v="signal" title="구조 헬기 — 눌러서 설명 보기">🚁 <b>${S.ended && S.ended.id === 'escape' ? '탈출 완료' : G.escapeToday(S) ? '오늘!' : `D-${Math.max(0, G.rescueDaysLeft(S))}`}</b></button>`
+          : `<button type="button" class="chip mini" data-a="hud-info" data-v="signal" title="구조 신호 — 눌러서 설명 보기">📡 ${S.rescueSignals}/${G.RESCUE_SIGNALS}</button>`}
+        <button type="button" class="chip" data-a="hud-info" data-v="weather" title="날씨 — 눌러서 설명 보기">${W.icon} ${W.name}</button>
       </div>
       <div class="hud-menu">
         <button class="btn ghost" data-a="help" aria-label="게임 설명">❔ 설명</button>
@@ -1479,6 +1835,21 @@ var Game = (function () {
         <button class="btn ghost danger" data-a="reset">처음부터</button>
       </div>
     </header>`;
+  }
+
+  function hudInfo(key) {
+    const W = G.WEATHER[S.weather], f = G.foodForecast(S);
+    return {
+      food: `🍞 식량 ${S.food}개 — 밤마다 살아 있는 사람 1명당 1개를 먹어요(용찬은 1개 더). 오늘 밤 예상 소비 ${f.total}개.`,
+      morale: `💛 사기 ${S.morale} — 쉘터 전체의 마음 상태예요. 25 미만이면 모두의 행동 효율이 떨어져요. 휴식·대화·좋은 일로 올라가요.`,
+      threat: `☣️ 위협도 ${S.threat} — 학교 주변 좀비의 양이에요. 낮에 낸 소음만큼 밤에 오르고, 높을수록 습격 확률이 올라가요. 소음 유인으로 낮춰요.`,
+      defense: `🛡️ 방어력 ${S.defense} — 높을수록 습격 확률과 피해가 줄어요. 쉘터 정비·바리케이드로 올리고, 밤마다 3씩 닳아요.`,
+      items: `🧰 재료 ${S.materials}(제작) · 💊 의약품 ${S.medicine}(치료) · 🔦 UV 배터리 ${S.uvBattery}(밤 습격 −${G.UV_POINTS}%p) · 📢 소음기 ${S.noisemakers}(안전한 유인)`,
+      signal: S.rescue
+        ? `🚁 구조 헬기 — ${G.escapeToday(S) ? '오늘 아침 옥상에 도착했어요! 탈출 작전을 시작하세요.' : `${G.rescueDaysLeft(S)}일 뒤 아침 옥상에 와요.`} 옥상 탐색으로 착륙 지점을 정리하면 성공률이 올라가요(현재 +${S.rescue.lz}/${G.LZ_MAX}).`
+        : `📡 구조 신호 ${S.rescueSignals}/${G.RESCUE_SIGNALS} — 안개가 아닌 날 옥상 탐색에 성공하면 1회 보내요. ${G.RESCUE_SIGNALS}회면 구조대가 응답하고 ${G.RESCUE_WAIT}일 뒤 헬기가 와요.`,
+      weather: `${W.icon} ${W.name} · 햇빛 ${W.sun} — 맑으면 낮 탐색이 안전하고, 비는 소음을 덮어줘요(60%만 반영), 안개면 옥상 신호가 실패해요.`,
+    }[key] || '';
   }
 
   function renderCard(p) {
@@ -1490,7 +1861,7 @@ var Game = (function () {
     else if (p.hp < p.maxHp * 0.4) tags.push('<span class="tag bad">중상</span>');
     else if (p.hp < p.maxHp * 0.75) tags.push('<span class="tag">부상</span>');
     if (p.id === 'gayoon' && p.status === 'ok') { const g = G.gayoonState(S); tags.push(`<span class="tag ${g === '안정' ? 'ok' : g === '충격' ? 'bad' : ''}">${g}</span>`); }
-    if (p.id === 'dongkeun' && p.status !== 'dead') tags.push(`<span class="tag">신뢰 ${G.trustLabel(S)}</span>`);
+    if (p.id === 'dongkeun' && p.status !== 'dead') tags.push(`<span class="tag" title="동근 신뢰 ${G.trustLabel(S)}">신뢰 ${G.trustLabel(S) === '알 수 없음' ? '?' : G.trustLabel(S)}</span>`);
     if (p.id === 'hyerin' && p.status === 'ok' && G.isCrisis(S)) tags.push('<span class="tag ok">본능 +1칸</span>');
     if (p.id === 'pyeongoh' && p.status === 'ok' && S.threat >= 70) tags.push('<span class="tag bad">당황</span>');
     if (p.id === 'juyeon' && S.juyeonIdea && p.status === 'ok') tags.push('<span class="tag ok">아이디어!</span>');
@@ -1510,6 +1881,7 @@ var Game = (function () {
   function renderPlan() {
     if (S.ended) return `<div class="col-title"><h2>${esc(S.ended.title)}</h2></div><p class="muted">${esc(S.ended.text)}</p>`;
     if (S.phase === 'evening') return renderEvening();
+    if (G.escapeToday(S)) return renderEscape();
     const step = !ui.sel ? 0 : !ui.action ? 1 : 2;
     const howto = ['① 생존자 고르기', '② 행동 고르기', '③ 배정하기'].map((t, i) => `<span class="${i === step ? 'on' : ''}">${t}</span>`).join('');
     let body;
@@ -1519,8 +1891,45 @@ var Game = (function () {
       <div class="howto">${howto}</div>${body}`;
   }
 
+  /* 탈출 작전 선택값 (기본: 쓸 수 있는 가장 좋은 방법, 동근 → 민성 순으로 후위) */
+  function escPlan() {
+    const e = ui.esc || {};
+    let tactic = e.tactic;
+    const T = G.ESCAPE_TACTICS[tactic];
+    if (!T || (T.need && S[T.need] < 1)) tactic = S.uvBattery > 0 ? 'uv' : S.noisemakers > 0 ? 'decoy' : 'quiet';
+    let guard = e.guard;
+    if (!guard || !G.able(S, guard)) guard = ['dongkeun', 'minseong'].find((id) => G.able(S, id)) || (G.ableList(S)[0] || {}).id;
+    ui.esc = { tactic, guard };
+    return ui.esc;
+  }
+  function renderEscape() {
+    const plan = escPlan();
+    const { chance, parts } = G.escapeChance(S, plan);
+    const tactics = Object.entries(G.ESCAPE_TACTICS).map(([k, T]) => {
+      const lack = T.need && S[T.need] < 1 ? (T.need === 'uvBattery' ? 'UV 배터리 없음' : '소음기 없음') : null;
+      return `<button class="act ${plan.tactic === k ? 'on' : ''}" data-a="esc-tactic" data-v="${k}" ${lack ? `disabled title="${lack}"` : ''}>
+        <span class="ai">${T.icon}</span><span class="an">${T.name}</span><span class="ad">${lack || `${T.desc} · +${T.bonus}`}</span></button>`;
+    }).join('');
+    const guards = G.ableList(S).map((p) => {
+      const b = p.id === 'dongkeun' || p.id === 'minseong' ? 12 : p.id === 'gayoon' && G.gayoonState(S) === '안정' ? 10 : 4;
+      return `<button class="guard ${plan.guard === p.id ? 'on' : ''}" data-a="esc-guard" data-v="${p.id}">${pf(p.id, plan.guard === p.id ? 'smile' : 'default', 'xs')}${G.nm(p.id)} <span class="gb">+${b}</span></button>`;
+    }).join('');
+    const dying = S.survivors.filter((p) => p.status === 'dying');
+    return `<div class="col-title"><h2>🚁 탈출 작전</h2><span class="muted small">${S.rescue.attempts ? `${S.rescue.attempts + 1}번째 시도` : '첫 시도'}</span></div>
+      <div class="esc-head"><span class="heli">🚁</span><span><b>구조 헬기가 옥상에 왔어요!</b>
+        <span class="small">살아 있는 ${G.aliveCount(S)}명 모두 옥상까지 가야 해요.${dying.length ? ` 빈사 상태인 ${dying.map((p) => G.nm(p.id)).join(', ')}은(는) 동료가 업고 가요.` : ''}</span></span></div>
+      <div class="sec">옥상까지 어떻게 갈까요?</div><div class="esc-tactics">${tactics}</div>
+      <div class="sec">누가 맨 뒤를 지킬까요? <span class="muted">(후위 · 실패하면 크게 다쳐요)</span></div><div class="guards">${guards}</div>
+      <div class="sec">성공 확률</div>
+      <div class="chance"><span class="pct ${chance >= 60 ? 'risk-low' : chance >= 35 ? 'risk-mid' : 'risk-high'}">${chance}%</span>
+        <span class="parts">${parts.map((x) => `<span class="${x.v > 0 && x.label !== '기본' ? 'plus' : x.v < 0 ? 'minus' : ''}">${esc(x.label)} ${x.label === '기본' ? x.v : (x.v > 0 ? '+' : '') + x.v}</span>`).join('')}</span></div>
+      <p class="small muted" style="margin:8px 0 0">실패해도 게임은 끝나지 않아요. 후위가 다치고 위협도 +15, 헬기는 ${G.RESCUE_WAIT}일 뒤 아침에 다시 와요.</p>
+      <div style="margin-top:12px"><button class="btn" data-a="esc-later">다음 기회로 미루기 (${G.RESCUE_WAIT}일 뒤, 사기 −2)</button></div>`;
+  }
+
   function renderOverview() {
     const items = [];
+    if (S.rescue) items.push(['', '🚁', `구조 헬기가 <b>${G.rescueDaysLeft(S)}일 뒤 아침</b> 옥상에 와요. <b>🎒 옥상 탐색</b>으로 착륙 지점을 정리하면 성공률↑ (지금 +${S.rescue.lz}/${G.LZ_MAX}). UV 배터리·소음기는 탈출 때 쓸 수 있게 아껴 두세요.`]);
     const alive = G.aliveCount(S);
     const dying = S.survivors.filter((p) => p.status === 'dying');
     if (dying.length) items.push(['bad', '🚑', `${dying.map((p) => `<b>${G.nm(p.id)}</b>(${3 - p.dyingDays}일 남음)`).join(', ')} 빈사 — 다른 생존자에게 <b>🩹 치료</b>를 맡기세요.`]);
@@ -1562,7 +1971,7 @@ var Game = (function () {
         const rooms = Object.entries(G.LOCATIONS).filter(([, L]) => L.explorable).map(([k, L]) => {
           const d = G.exploreDanger(S, ui.sel, k, ui.mode);
           return `<button class="room ${ui.loc === k ? 'on' : ''}" data-a="pick-loc" data-v="${k}">
-            <span class="ri">${LOC_ICON[k]}</span><span class="rn">${L.name}</span><span class="rd">${LOC_GIVES[k]}</span>
+            <span class="ri">${LOC_ICON[k]}</span><span class="rn">${L.name}</span><span class="rd">${locGives(k)}</span>
             <span class="rk ${riskClass(d)}">위험 ${G.riskLabel(d)}</span></button>`;
         }).join('');
         return `<div class="sec">어디로 갈까요?</div><div class="schoolmap opts">${rooms}</div>`;
@@ -1602,7 +2011,7 @@ var Game = (function () {
       const L = G.LOCATIONS[plan.loc];
       if (G.able(S, 'pyeongoh')) {
         const lr = G.lootRange(S, sid, plan.loc, plan.mode);
-        rows.push(['예상 수확', lr ? `${G.LOOT_NAME[lr.res]} ${lr.min}~${lr.max}개` : L.loot === 'intel' ? '이틀간 탐색 위험 −10' : S.weather === 'fog' ? '안개: 신호 불가, 위협도 −4' : '구조 신호 +1']);
+        rows.push(['예상 수확', lr ? `${G.LOOT_NAME[lr.res]} ${lr.min}~${lr.max}개` : L.loot === 'intel' ? '이틀간 탐색 위험 −10' : S.rescue ? `착륙 지점 정리 +${S.weather === 'fog' ? 4 : 8} (탈출 성공률)` : S.weather === 'fog' ? '안개: 신호 불가, 위협도 −4' : '구조 신호 +1']);
       } else rows.push(['예상 수확', '평오가 없어 알 수 없음']);
       rows.push(['소음', `${G.MODES[plan.mode].noise}${sid === 'yongchan' ? ' (+용찬 돌발 가능)' : ''}${sid === 'jeongmin' ? ' (+정민 돌발 가능)' : ''}`]);
       rows.push(['', `<span class="muted small">${esc(r.note)}. 실패해도 일부 자원을 챙긴다.</span>`]);
@@ -1635,6 +2044,48 @@ var Game = (function () {
       <button class="btn primary assign-btn" data-a="assign" ${err ? 'disabled' : ''}>${ACT_ICON[plan.action]} ${name}에게 배정하기</button></div>`;
   }
 
+  /* 오늘 낮(또는 탈출 시도) 결과 보고서: 수확·인물 변화·행동별 결과·사건을 가운데에 모아 보여준다 */
+  const GAIN_ICON = { food: '🍞', materials: '🧰', medicine: '💊', uvBattery: '🔦', noisemakers: '📢', signals: '📡', lz: '🚁', defense: '🛡️', morale: '💛', threat: '☣️', hp: '❤️', alive: '👥' };
+  const MAIN_GAINS = ['food', 'materials', 'medicine', 'uvBattery', 'noisemakers', 'signals', 'lz', 'defense'];
+  function highlight(text) {
+    return esc(text)
+      .replace(/(식량|재료|의약품) (\d+)개/g, '<span class="hl-item">$1 $2개</span>')
+      .replace(/(UV 배터리|소음기|방어|구조 신호|착륙 지점|탈출 성공률|안정도|신뢰도|사기|위협도|체력|방어 준비)( ?)([+−-]\d+)/g, (m, a, sp, n) => {
+        const neg = n[0] !== '+';
+        const goodWhenDown = a === '위협도';
+        return `<span class="${neg !== goodWhenDown ? 'hl-bad' : 'hl-good'}">${a}${sp}${n}</span>`;
+      });
+  }
+  function renderDayReport() {
+    if (!S.summary) return '';
+    const today = S.log.filter((e) => e.day === S.day && ['낮', '사건', '탈출'].includes(e.phase));
+    const noise = today.find((e) => e.text.startsWith('오늘 발생한 소음'));
+    const doneList = today.filter((e) => e.phase !== '사건' && e !== noise);
+    const events = today.filter((e) => e.phase === '사건');
+    const deltasAll = S.summary.deltas || [];
+    const good = (d) => (d.v > 0 ? d.key !== 'threat' : d.key === 'threat');
+    const chip = (d) => `<div class="gain ${good(d) ? 'up' : 'down'} ${MAIN_GAINS.includes(d.key) ? '' : 'small'}"><span class="gi">${GAIN_ICON[d.key] || '•'}</span><span><span class="gl">${d.label}</span><span class="gv">${d.v > 0 ? '+' : ''}${d.v}</span></span></div>`;
+    const main = deltasAll.filter((d) => MAIN_GAINS.includes(d.key));
+    const minor = deltasAll.filter((d) => !MAIN_GAINS.includes(d.key));
+    const ppl = (S.summary.people || []).filter((x) => G.CHAR[x.id]);
+    let out = `<div class="rep-sec">📦 ${esc(S.summary.title)} — 얻은 것 · 달라진 것</div>`;
+    if (main.length || minor.length) out += `<div class="gains">${main.concat(minor).map(chip).join('')}</div>`;
+    if (ppl.length) out += `<div class="pchg" aria-label="인물 변화">${ppl.map((x) => `<span class="pc ${x.tone}">${pf(x.id, x.tone === 'good' ? 'smile' : x.tone === 'bad' ? 'tired' : 'default', 'xs')}${esc(x.text)}</span>`).join('')}</div>`;
+    if (!deltasAll.length && !ppl.length) out += '<div class="delta"><span>큰 변화 없음</span></div>';
+    if (doneList.length) {
+      out += `<div class="rep-sec">🧑‍🤝‍🧑 누가 무엇을 했나</div><div class="acts-done">${doneList.map((e) => {
+        const who = findChar(e.text);
+        return `<div class="done ${e.tone}">${who ? pf(who, logExpr(e), 'sm') : `<span class="dot">${e.phase === '탈출' ? '🚁' : '•'}</span>`}<span>${who ? `<span class="who" style="color:${G.CHAR[who].color}">${G.nm(who)}</span><br>` : ''}${highlight(e.text)}</span></div>`;
+      }).join('')}</div>`;
+    }
+    for (const e of events) {
+      const who = findChar(e.text);
+      out += `<div class="rep-sec">🎲 오늘의 사건</div><div class="event-card ${e.tone === 'bad' ? 'bad' : ''}">${who ? pf(who, logExpr(e), 'lg') : '<span class="dot">🎲</span>'}<span><span class="et">${e.tone === 'good' ? '좋은 일' : e.tone === 'bad' ? '나쁜 일' : '사건'}</span><p>${highlight(e.text)}</p></span></div>`;
+    }
+    if (noise) out += `<div class="noise-line">🔊 오늘 소음 <b>${S.noiseToday}</b> — 밤에 좀비들이 소리 난 곳을 조사하러 와요. 아래에서 습격 확률과 대비를 확인하세요.</div>`;
+    return out;
+  }
+
   function renderSummary() {
     let out = '';
     if (S.spotlight && G.CHAR[S.spotlight.id]) {
@@ -1643,32 +2094,39 @@ var Game = (function () {
     }
     if (S.summary) {
       out += `<div class="small muted">${esc(S.summary.title)}</div>`;
-      out += S.summary.deltas.length ? `<div class="delta">${S.summary.deltas.map((d) => {
+      const ppl = (S.summary.people || []).filter((x) => G.CHAR[x.id]);
+      if (S.summary.deltas.length) out += `<div class="delta">${S.summary.deltas.map((d) => {
         const good = d.v > 0 ? d.key !== 'threat' : d.key === 'threat';
         return `<span class="${good ? 'up' : 'down'}">${d.label} ${d.v > 0 ? '+' : ''}${d.v}</span>`;
-      }).join('')}</div>` : '<div class="delta"><span>큰 변화 없음</span></div>';
+      }).join('')}</div>`;
+      if (ppl.length) out += `<div class="pchg" aria-label="인물 변화">${ppl.map((x) => `<span class="pc ${x.tone}">${pf(x.id, x.tone === 'good' ? 'smile' : x.tone === 'bad' ? 'tired' : 'default', 'xs')}${esc(x.text)}</span>`).join('')}</div>`;
+      if (!S.summary.deltas.length && !ppl.length) out += '<div class="delta"><span>큰 변화 없음</span></div>';
     }
     return out;
   }
 
   function renderEvening() {
-    const alive = G.aliveCount(S);
-    const need = S.night.ration ? Math.ceil(alive / 2) : alive;
+    const f = G.foodForecast(S);
     const pt = G.projectedThreat(S), rc = G.raidChance(S);
-    const extra = G.able(S, 'yongchan') && !S.night.ration ? 1 : 0;
+    const uvOff = G.nightPreview(S, 'uv', false).raid, uvOn = G.nightPreview(S, 'uv', true).raid;
+    const huOff = G.nightPreview(S, 'hush', false).raid, huOn = G.nightPreview(S, 'hush', true).raid;
+    const raOff = G.nightPreview(S, 'ration', false).food.total, raOn = G.nightPreview(S, 'ration', true).food.total;
+    const arrow = (on, a, b, unit) => `<span class="tnum">${on ? '적용 중' : '켜면'}: ${a}${unit} → <b>${b}${unit}</b>${String(a).replace(/\D/g, '') === String(b) ? ` <span class="muted">(변화 없음${unit === '%' && Number(b) === G.RAID_MIN ? `, 이미 최저 ${G.RAID_MIN}%` : ''})</span>` : ''}</span>`;
     return `<div class="col-title"><h2>낮 결과 · 밤 대비</h2></div>
-      ${renderSummary()}
-      <div class="sec">오늘 밤 습격 확률</div>
+      ${renderDayReport()}
+      <div class="rep-sec" style="margin-top:18px">🌙 밤 대비</div>
+      <div class="sec" style="margin-top:4px">오늘 밤 습격 확률</div>
       <div class="raid"><span class="pct ${riskClass(rc)}">${rc}%</span><span class="meta">
         <span>☣️ 위협도 ${S.threat} → <b>${pt}</b> (오늘 소음 ${S.noiseToday}${S.weather === 'rain' ? ', 빗소리로 60%만 반영' : ''})</span>
         <span>🛡️ 방어력 ${S.defense} · 방어 준비 ${S.prep}</span>
-        <span style="${S.food < need + extra ? 'color:var(--danger)' : ''}">🍞 밤에 먹을 식량 ${need}${extra ? ' + 용찬 1' : ''}개 (보유 ${S.food})</span>
+        ${S.night.uv && S.uvBattery > 0 ? `<span>🔦 UV 켜짐 — 확률에서 ${G.UV_POINTS}%포인트 뺌</span>` : ''}
+        <span class="foodline" style="${f.short ? 'color:var(--danger)' : ''}">🍞 오늘 밤 식량: ${f.alive}명${f.ration ? ` (배급 절약 → ${f.base}개)` : ''} ${f.baseEaten}개${f.extra ? ' + 용찬 1개' : ''} = <b>${f.total}개</b> · 남는 식량 ${f.after}개${f.short ? ` · <b>${f.short}명분 부족</b>` : ''}</span>
       </span></div>
       <div class="sec">대비할 것을 고르세요 (선택)</div>
       <div class="toggles">
-        <label class="toggle"><span class="tt"><input type="checkbox" data-a="night" data-v="uv" ${S.night.uv ? 'checked' : ''} ${S.uvBattery <= 0 ? 'disabled' : ''}>🔦 UV 랜턴</span><span class="muted">습격 −25%, 피해↓ · 배터리 1 (남음 ${S.uvBattery})${S.uvBattery <= 0 ? ' — 과학실 재료로 제작' : ''}</span></label>
-        <label class="toggle"><span class="tt"><input type="checkbox" data-a="night" data-v="hush" ${S.night.hush ? 'checked' : ''}>🤫 숨죽이기</span><span class="muted">소음 영향 절반 · 사기 −3</span></label>
-        <label class="toggle"><span class="tt"><input type="checkbox" data-a="night" data-v="ration" ${S.night.ration ? 'checked' : ''}>🍞 배급 절약</span><span class="muted">식량 절반만 · 사기 −4, 체력 −3</span></label>
+        <label class="toggle"><span class="tt"><input type="checkbox" data-a="night" data-v="uv" ${S.night.uv ? 'checked' : ''} ${S.uvBattery <= 0 ? 'disabled' : ''}>🔦 UV 랜턴</span>${S.uvBattery <= 0 ? '<span class="muted">배터리가 없어 쓸 수 없어요. 재료 3개로 UV 랜턴을 만들면 배터리 3개가 생겨요.</span>' : `<span class="muted">습격 확률에서 ${G.UV_POINTS}%포인트 빼기(최저 ${G.RAID_MIN}%) · 피해 40%↓ · 배터리 1개 (남음 ${S.uvBattery})</span>${arrow(S.night.uv, uvOff, uvOn, '%')}`}</label>
+        <label class="toggle"><span class="tt"><input type="checkbox" data-a="night" data-v="hush" ${S.night.hush ? 'checked' : ''}>🤫 숨죽이기</span><span class="muted">오늘 소음의 영향 절반 · 사기 −3</span>${arrow(S.night.hush, huOff, huOn, '%')}</label>
+        <label class="toggle"><span class="tt"><input type="checkbox" data-a="night" data-v="ration" ${S.night.ration ? 'checked' : ''}>🍞 배급 절약</span><span class="muted">절반만 먹기(용찬 추가 없음) · 사기 −4, 체력 −3</span>${arrow(S.night.ration, `식량 ${raOff}`, raOn, '개').replace('→ <b>', '→ <b>식량 ')}</label>
       </div>`;
   }
 
@@ -1691,7 +2149,7 @@ var Game = (function () {
   function renderCmd() {
     const max = G.maxAP(S);
     let slots = '';
-    if (S.phase === 'morning' && !S.ended) {
+    if (S.phase === 'morning' && !S.ended && !G.escapeToday(S)) {
       for (let i = 0; i < max; i++) {
         const a = S.assignments[i];
         slots += a
@@ -1703,6 +2161,10 @@ var Game = (function () {
     if (S.ended) {
       hint = `<b>${esc(S.ended.title)}</b>`;
       btn = '<button class="btn primary cta" data-a="new">새 게임 시작</button>';
+    } else if (G.escapeToday(S)) {
+      const plan = escPlan(), err = G.validateEscape(S, plan), ch = G.escapeChance(S, plan).chance;
+      hint = err ? esc(err) : `🚁 이동 방법과 맨 뒤를 지킬 사람을 고르고 <b>탈출 시도</b>를 누르세요.`;
+      btn = `<button class="btn primary cta" data-a="esc-go" ${err ? 'disabled' : ''}>🚁 탈출 시도<span class="cta-left">${ch}%</span></button>`;
     } else if (S.phase === 'morning') {
       const left = max - S.assignments.length;
       if (left === 0) hint = '행동 칸이 다 찼어요. <b>낮 행동 실행</b>을 누르세요.';
@@ -1710,7 +2172,7 @@ var Game = (function () {
       else if (!ui.action) hint = `<b>${G.nm(ui.sel)}</b>에게 시킬 행동을 고르세요.`;
       else { const err = G.validate(S, currentPlan()); hint = err ? esc(err) : '가운데의 <b>배정하기</b>를 누르면 아래 칸에 들어가요.'; }
       const choosing = ui.sel && ui.action && left > 0;   // 행동을 고르는 중엔 ‘배정하기’가 주인공
-      btn = `<button class="btn ${choosing ? '' : 'primary'} cta" data-a="run-day">☀️ 낮 행동 실행</button>`;
+      btn = `<button class="btn ${choosing ? '' : 'primary'} cta" data-a="run-day">☀️ 낮 행동 실행${left > 0 ? `<span class="cta-left">빈 칸 ${left}</span>` : ''}</button>`;
     } else {
       hint = `습격 확률 <b>${G.raidChance(S)}%</b>. 대비를 정하고 <b>밤 보내기</b>를 누르세요.`;
       btn = `<button class="btn primary cta" data-a="run-night">🌙 밤 보내기</button>`;
@@ -1720,14 +2182,15 @@ var Game = (function () {
 
   function renderEnd() {
     const v = S.ended.type === 'victory';
+    const escaped = S.ended.id === 'escape';
     const alive = G.aliveCount(S);
-    return `<div class="overlay"><div class="modal" role="dialog" aria-label="${esc(S.ended.title)}">
-      <p class="muted">${v ? '임시 승리' : '게임 오버'}</p>
+    return `<div class="overlay"><div class="modal ${escaped ? 'end-escape' : ''}" role="dialog" aria-label="${esc(S.ended.title)}">
+      <p class="muted">${escaped ? '🚁 탈출 엔딩' : v ? '임시 승리' : '게임 오버'}</p>
       <h2>${esc(S.ended.title)}</h2>
       <p>${esc(S.ended.text)}</p>
       <div class="end-cast">${S.survivors.map((p) => pf(p.id, p.status === 'dead' ? 'default' : v ? 'smile' : 'tired', 'sm', p.status === 'dead' ? 'dead' : '')).join('')}</div>
       <ul>
-        <li>버틴 날: ${S.day - 1}일</li>
+        <li>${escaped ? `탈출한 날: ${S.day}일차 아침 (탈출 시도 ${S.rescue.attempts}회)` : `버틴 날: ${S.day - 1}일`}</li>
         <li>생존자: ${alive}명 (${S.survivors.filter((p) => p.status !== 'dead').map((p) => G.nm(p.id)).join(', ') || '없음'})</li>
         <li>탐색 ${S.stats.explores}회 · 습격 ${S.stats.raids}회 (막아냄 ${S.stats.repelled}) · 제작 ${S.stats.crafted}회</li>
       </ul>
@@ -1737,17 +2200,29 @@ var Game = (function () {
 
   function render() {
     CharacterArt.install();
-    if (ui.screen === 'menu' || !S) renderMenu(); else renderGame();
+    if (ui.screen === 'select') renderSelect();
+    else if (ui.screen === 'menu' || !S) renderMenu(); else renderGame();
     if (ui.intro) { app.insertAdjacentHTML('beforeend', renderIntro()); positionTour(); }
     renderToast();
   }
 
   /* ---------- 입력 처리 ---------- */
+  function doRunDay() {
+    const start = S.log.length;
+    const r = G.runDay(S);
+    if (!r.ok) { toast(r.error, true); return; }
+    makeSpotlight(start);
+    resetSelection(); save(); toast('낮 행동 완료! 밤 대비를 확인하세요.');
+  }
   function resetSelection() { ui.sel = null; ui.action = null; ui.target = null; ui.useMaterial = false; }
-  function startNew() {
-    S = Game.newGame(); ui.screen = 'game'; ui.modal = null; resetSelection(); save();
-    if (!tutDone()) { ui.intro = { type: 'chars', idx: 0, from: 'first' }; render(); return; }
-    render(); toast('새 게임 시작! 생존자 카드를 눌러 보세요.');
+  function startNew() { openSelect(); }
+  function startGame() {
+    const roster = G.CHARACTERS.map((c) => c.id).filter((id) => ui.pick && ui.pick.has(id));
+    if (roster.length < G.ROSTER_MIN) { toast(`${G.ROSTER_MIN}명 이상 골라 주세요.`, true); return; }
+    try { localStorage.setItem(ROSTER_KEY, JSON.stringify(roster)); } catch (e) {}
+    S = Game.newGame(roster); ui.screen = 'game'; ui.modal = null; resetSelection(); save();
+    if (!tutDone()) { ui.intro = { type: 'tour', step: 0, from: 'first' }; render(); return; }
+    render(); toast(`${roster.length}명의 생존반으로 시작! 생존자 카드를 눌러 보세요.`);
   }
 
   document.addEventListener('click', (ev) => {
@@ -1758,6 +2233,15 @@ var Game = (function () {
     if (el.tagName === 'INPUT') return;
     switch (a) {
       case 'new': startNew(); return;
+      case 'start-game': startGame(); return;
+      case 'pick-toggle': {
+        if (ui.pick.has(v)) ui.pick.delete(v); else ui.pick.add(v);
+        render(); return;
+      }
+      case 'pick-rec': ui.pick = new Set(G.RECOMMENDED); render(); return;
+      case 'pick-all': ui.pick = new Set(G.CHARACTERS.map((c) => c.id)); render(); return;
+      case 'pick-none': ui.pick = new Set(); render(); return;
+      case 'pick-detail': ui.intro = { type: 'chars', idx: Number(v), from: 'select' }; render(); return;
       case 'continue': { const s = loadSave(); if (!s) { toast('저장된 게임이 없어요.', true); return; } S = s; ui.screen = 'game'; resetSelection(); render(); toast(`${S.day}일차부터 이어서 해요.`); return; }
       case 'help': ui.modal = 'help'; render(); return;
       case 'close-modal': ui.modal = null; render(); return;
@@ -1771,10 +2255,10 @@ var Game = (function () {
       case 'intro-prev': ui.intro.idx = Math.max(0, ui.intro.idx - 1); render(); return;
       case 'intro-next':
         if (ui.intro.idx < G.CHARACTERS.length - 1) { ui.intro.idx++; render(); return; }
-        if (ui.intro.from === 'first') { ui.intro = { type: 'tour', step: 0, from: 'first' }; render(); return; }
+        if (ui.intro.from === 'first') { ui.intro = null; render(); return; }
         ui.intro = null; render(); return;
       case 'intro-skip':
-        if (ui.intro.from === 'first') { ui.intro = { type: 'tour', step: 0, from: 'first' }; render(); return; }
+        if (ui.intro.from === 'first') { ui.intro = null; render(); return; }
         ui.intro = null; render(); return;
       case 'tour-prev': ui.intro.step = Math.max(0, ui.intro.step - 1); render(); return;
       case 'tour-next':
@@ -1811,13 +2295,31 @@ var Game = (function () {
       case 'unassign': { const r = G.unassign(S, Number(v)); if (!r.ok) toast(r.error, true); else { toast('배정을 취소했어요.'); save(); } break; }
       case 'run-day': {
         if (S.phase !== 'morning') return;
-        const start = S.log.length;
-        const r = G.runDay(S);
+        if (S.assignments.length < G.maxAP(S)) { ui.modal = 'confirm-day'; break; }   // 빈칸이 있으면 먼저 묻는다
+        doRunDay(); break;
+      }
+      case 'run-day-go': {
+        ui.modal = null;
+        if (S.phase !== 'morning') break;
+        doRunDay(); break;
+      }
+      case 'esc-tactic': escPlan(); ui.esc.tactic = v; ui.keepPlanScroll = true; break;
+      case 'esc-guard': escPlan(); ui.esc.guard = v; ui.keepPlanScroll = true; break;
+      case 'esc-later': {
+        const r = G.postponeEscape(S);
         if (!r.ok) { toast(r.error, true); break; }
-        makeSpotlight(start);
-        resetSelection(); save(); toast('낮 행동 완료! 밤 대비를 확인하세요.');
+        save(); toast(`헬기를 ${G.RESCUE_WAIT}일 뒤로 미뤘어요. 오늘은 평소처럼 계획하세요.`);
         break;
       }
+      case 'esc-go': {
+        const start = S.log.length;
+        const r = G.attemptEscape(S, escPlan());
+        if (!r.ok) { toast(r.error, true); break; }
+        makeSpotlight(start); ui.esc = null; save();
+        toast(r.success ? '🚁 탈출 성공!' : `탈출 실패… 헬기는 ${G.RESCUE_WAIT}일 뒤 다시 와요.`, !r.success);
+        break;
+      }
+      case 'hud-info': toast(hudInfo(v), 'info', 5200); return;
       case 'run-night': {
         if (S.phase !== 'evening') return;
         const start = S.log.length;
@@ -1846,7 +2348,7 @@ var Game = (function () {
   window.addEventListener('resize', positionTour);
   document.addEventListener('keydown', (ev) => {
     if (ev.key === 'Escape' && ui.intro) {
-      if (ui.intro.type === 'chars' && ui.intro.from === 'first') ui.intro = { type: 'tour', step: 0, from: 'first' };
+      if (ui.intro.type === 'chars' && ui.intro.from === 'first') ui.intro = null;
       else { ui.intro = null; setTutDone(); }
       render(); return;
     } if (ev.key === 'Escape' && ui.modal) { ui.modal = null; render(); } });
